@@ -1,0 +1,16 @@
+{
+  "name": "rest-authenticate-api",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Sample Node.js REST API with Authentication using Express & SQLite",
+  "dependencies": {
+    "body-parser": "^2.2.1",
+    "express": "^5.2.1",
+    "sqlite3": "^5.1.7"
+  }
+}
