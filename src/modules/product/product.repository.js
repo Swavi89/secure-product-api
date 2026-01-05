@@ -11,7 +11,7 @@ exports.create = (product) => {
           reject(err);
         } else {
           db.get(
-            'SELECT * FROM products WHERE id = ?',
+            `SELECT id, product_name, product_quantity, datetime(created_at, 'localtime') AS created_at, datetime(updated_at, 'localtime') AS updated_at FROM products WHERE id = ?`,
             [this.lastID],
             (err, row) => {
               if (err) reject(err);
@@ -27,7 +27,7 @@ exports.create = (product) => {
 
 exports.findAll = () => {
   return new Promise((resolve, reject) => {
-    db.all('SELECT * FROM products ORDER BY created_at DESC', [], (err, rows) => {
+    db.all(`SELECT id, product_name, product_quantity, datetime(created_at, 'localtime') AS created_at, datetime(updated_at, 'localtime') AS updated_at FROM products ORDER BY created_at DESC`, [], (err, rows) => {
       if (err) {
         reject(err);
       } else {
@@ -40,7 +40,7 @@ exports.findAll = () => {
 exports.findById = (id) => {
   return new Promise((resolve, reject) => {
     db.get(
-      'SELECT * FROM products WHERE id = ?',
+      `SELECT id, product_name, product_quantity, datetime(created_at, 'localtime') AS created_at, datetime(updated_at, 'localtime') AS updated_at FROM products WHERE id = ?`,
       [id],
       (err, row) => {
         if (err) {
@@ -71,7 +71,7 @@ exports.update = (id, product) => {
           resolve(null); 
         } else {
           db.get(
-            'SELECT * FROM products WHERE id = ?',
+            `SELECT id, product_name, product_quantity, datetime(created_at, 'localtime') AS created_at, datetime(updated_at, 'localtime') AS updated_at FROM products WHERE id = ?`,
             [id],
             (err, row) => {
               if (err) reject(err);
